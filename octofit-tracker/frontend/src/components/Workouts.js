@@ -41,7 +41,7 @@ const Workouts = () => {
         </thead>
         <tbody>
           {workouts.map((workout, index) => (
-            <tr key={index}>
+            <tr key={workout._id || index}>
               <td><strong>{workout.name}</strong></td>
               <td>{workout.description}</td>
               <td>{workout.duration_minutes}</td>

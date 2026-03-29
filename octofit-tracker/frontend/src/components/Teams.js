@@ -33,7 +33,7 @@ const Teams = () => {
       <h2 className="mb-4">Teams</h2>
       <div className="row">
         {teams.map((team, index) => (
-          <div className="col-md-6 mb-4" key={index}>
+          <div className="col-md-6 mb-4" key={team._id || index}>
             <div className="card">
               <div className="card-header bg-dark text-white">
                 <h5 className="card-title mb-0">{team.name}</h5>

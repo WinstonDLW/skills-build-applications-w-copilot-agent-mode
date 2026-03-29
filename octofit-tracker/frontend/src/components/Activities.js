@@ -43,7 +43,7 @@ const Activities = () => {
         </thead>
         <tbody>
           {activities.map((activity, index) => (
-            <tr key={index}>
+            <tr key={activity._id || index}>
               <td><strong>{activity.name}</strong></td>
               <td>{activity.description}</td>
               <td>{activity.duration_minutes}</td>

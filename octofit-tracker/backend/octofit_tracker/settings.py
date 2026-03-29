@@ -3,11 +3,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-octofit-tracker-secret-key-change-in-production'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-octofit-tracker-secret-key-change-in-production')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 codespace_name = os.environ.get('CODESPACE_NAME')
 if codespace_name:
     ALLOWED_HOSTS.append(f"{codespace_name}-8000.app.github.dev")

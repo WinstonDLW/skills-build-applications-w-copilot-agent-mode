@@ -40,7 +40,7 @@ const Users = () => {
         </thead>
         <tbody>
           {users.map((user, index) => (
-            <tr key={index}>
+            <tr key={user._id || index}>
               <td><strong>{user.username}</strong></td>
               <td>{user.email}</td>
             </tr>
