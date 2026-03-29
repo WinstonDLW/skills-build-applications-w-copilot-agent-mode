@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from . import views
+import os
 
 
 router = DefaultRouter()
@@ -27,8 +28,20 @@ router.register(r'activities', views.ActivityViewSet, basename='activity')
 router.register(r'workouts', views.WorkoutViewSet, basename='workout')
 router.register(r'leaderboards', views.LeaderboardViewSet, basename='leaderboard')
 
+def api_base_url(request):
+    codespace_name = os.environ.get('CODESPACE_NAME', None)
+    if codespace_name:
+        base_url = f"https://{codespace_name}-8000.app.github.dev/api/"
+    else:
+        # fallback for localhost or non-codespace
+        scheme = 'https' if request.is_secure() else 'http'
+        host = request.get_host()
+        base_url = f"{scheme}://{host}/api/"
+    from django.http import JsonResponse
+    return JsonResponse({"api_base_url": base_url})
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('', views.api_root, name='api-root'),
+    path('', api_base_url, name='api-root'),
 ]
