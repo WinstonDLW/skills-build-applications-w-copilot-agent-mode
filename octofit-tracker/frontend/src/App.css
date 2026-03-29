@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #1a1a2e;
+  padding: 20px;
+  color: white;
+}
+
+.navbar-brand img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.nav-link:hover {
+  color: #7b68ee !important;
+}
